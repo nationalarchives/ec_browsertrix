@@ -1,0 +1,5 @@
+attrs==21.4.0
+jsonlines==3.0.0
+PyYAML==6.0
+six==1.16.0
+warcio==1.7.4
