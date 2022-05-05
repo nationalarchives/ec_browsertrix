@@ -1,0 +1,25 @@
+#Re https://github.com/webrecorder/browsertrix-crawler
+#See especially the parameters listed under the expandy-triangle-thing under 'Crawling Configuration Options'
+#This file just specifies values for those parameters
+
+seeds: #Starting points for crawls. Completed workflows are no longer accessible
+       #main page, so we need to list the path to each workflow that we wish to
+       #archive.
+  - url: https://www.zooniverse.org/projects/bogden/scarlets-and-blues/
+  - url: https://www.zooniverse.org/projects/bogden/scarlets-and-blues/classify/workflow/18504
+  - url: https://www.zooniverse.org/projects/bogden/scarlets-and-blues/classify/workflow/18505
+
+#Global parameters. These can also be set per-seed, but no need for that here.
+collection:      scarlets_and_blues
+behaviors:       autoscroll,autoplay,autofetch #All the 'default' auto-behaviours
+behaviorTimeout: 0 #Let the behaviours run until they complete
+timeout:         600 #If a page still isn't all done after 10 minutes, give up
+waitUntil:       networkidle0 #Wait until we are not waiting for any requests
+text:            True #Grab text from each visited page, handy for search
+generateWACZ:    True #Generate a single WACZ file from all WARCs generated
+combinewarc:     True #Combine all WARCS generated into a single WARC
+scopeType:       prefix #From each seed, recursively crawl all links that have
+                        #an address beginning with the seed. Prefix possibly
+                        #excludes the last path component of the seed -- I am
+                        #not clear on whether this applies only to seeds
+                        #ending with a filename
