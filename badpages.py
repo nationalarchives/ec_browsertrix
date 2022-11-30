@@ -45,7 +45,7 @@ if args.log:
         codes.add(m[2])
         urls.add(m[1])
         continue
-      m = re.search('.*\berror\b.*', line, re.IGNORECASE)
+      m = re.match('\S*error\S*:', line, re.IGNORECASE)
       if m and not line == 'Error: Execution context was destroyed, most likely because of a navigation.':
         raise Exception(f'Uncaught potential error "{m[0][:-1]}" at {args.log}:{number}: {line}')
 
