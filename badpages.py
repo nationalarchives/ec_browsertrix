@@ -34,7 +34,7 @@ with jsonlines.open(os.path.join(args.crawldir, 'pages', 'pages.jsonl')) as page
 
 if args.log:
   with open(args.log, 'r') as f:
-    for line in f:
+    for number, line in enumerate([x.strip() for x in f], start = 1):
       m = re.match('ERROR: (https?://[^:]+): *(.*)', line)
       if m:
         codes.add(m[2])
@@ -47,7 +47,7 @@ if args.log:
         continue
       m = re.search('.*\berror\b.*', line, re.IGNORECASE)
       if m and not line == 'Error: Execution context was destroyed, most likely because of a navigation.':
-        raise Exception(f'Uncaught potential error:\n{m[0]}')
+        raise Exception(f'Uncaught potential error "{m[0][:-1]}" at {args.log}:{number}: {line}')
 
 if len(codes):
   print('All titles/errors encountered\n' + '-----------------------------\n' + '\n'.join(sorted(codes)), file = sys.stderr)
