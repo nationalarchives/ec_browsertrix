@@ -6,7 +6,7 @@ For example: $0 configs/scarlets_and_blues.yaml 8
 Tweak [workers] for your system or leave unset.
 
 You may need to do this first:
-sudo chown -R "$USER" crawls"
+sudo chown -R "$USER" crawls
 
 EOF
 config="`basename $1 .yaml`"
