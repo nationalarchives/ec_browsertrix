@@ -29,18 +29,3 @@ LSB:
 EOF
 cat "$1" | docker run -e CHROME_FLAGS='--incognito' -p 9000:9000 -i -v $PWD/crawls:/crawls/ webrecorder/browsertrix-crawler:0.5.1 crawl --config stdin ${2:+--workers $2} 2>"$err"
 exit 0
-
-
-echo "Command: $@" > "$log"
-echo "Git remote:" >> "$log"
-git remote -v >> "$log"
-echo >> "$log"
-echo "Git revision: `git rev-parse HEAD`" >> "$log"
-echo "Git status:" >> "$log"
-git stat >> "$log"
-echo >> "$log"
-echo "Docker: `docker --version`" >> "$log"
-echo "LSB:" >> "$log"
-cat /etc/lsb-release >> "$log"
-cat "$1" | docker run -i -v $PWD/crawls:/crawls/ webrecorder/browsertrix-crawler:0.5.1 crawl --config stdin 2>"$err"
-
