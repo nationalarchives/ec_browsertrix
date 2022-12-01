@@ -7,7 +7,7 @@ Tweak [workers] for your system or leave unset.
 
 This script assumes that configs are screencasting
 to port 9000. You may be able to monitor the crawl
-at http://localhoast:9000.
+at http://localhost:9000.
 
 EOF
 config="`basename $1 .yaml`"
@@ -35,6 +35,7 @@ cat "$1" | docker run -e CHROME_FLAGS='--incognito' -p 9000:9000 -i -v $PWD/craw
 
 
 cat <<EOF
+
 Can e.g. use https://replayweb.page/ to view
 resulting crawls/collections/*/*.wacz files.
 At time of writing, this page works locally i.e.
