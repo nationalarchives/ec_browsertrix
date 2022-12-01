@@ -9,7 +9,7 @@ seeds: #Starting points for crawls.
 collection:      owd_blog
 behaviors:       autoscroll,autoplay,autofetch #All the 'default' auto-behaviours
 behaviorTimeout: 0 #Let the behaviours run until they complete
-timeout:         600 #If a page still isn't all done after 10 minutes, give up
+timeout:         60 #If a page still isn't all done after 1 minute, give up
 waitUntil:       networkidle0 #Wait until we are not waiting for any requests
 text:            True #Grab text from each visited page, handy for search
 generateWACZ:    True #Generate a single WACZ file from all WARCs generated
