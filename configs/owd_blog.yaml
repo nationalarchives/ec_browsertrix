@@ -1,0 +1,23 @@
+#Re https://github.com/webrecorder/browsertrix-crawler
+#See especially the parameters listed under the expandy-triangle-thing under 'Crawling Configuration Options'
+#This file just specifies values for those parameters
+
+seeds: #Starting points for crawls.
+  - url: http://blog.operationwardiary.org
+
+#Global parameters. These can also be set per-seed, but no need for that here.
+collection:      owd_blog
+behaviors:       autoscroll,autoplay,autofetch #All the 'default' auto-behaviours
+behaviorTimeout: 0 #Let the behaviours run until they complete
+timeout:         600 #If a page still isn't all done after 10 minutes, give up
+waitUntil:       networkidle0 #Wait until we are not waiting for any requests
+text:            True #Grab text from each visited page, handy for search
+generateWACZ:    True #Generate a single WACZ file from all WARCs generated
+combinewarc:     True #Combine all WARCS generated into a single WARC
+scopeType:       custom
+include:
+  - blog.operationwardiary.wordpress.com/.*
+  - operationwardiary.files.wordpress.com/.*
+extraHops:       1
+overwrite:       True
+screencastPort:  9000
