@@ -49,7 +49,7 @@ to view the result.
 To package up logs and archive:
 ./package.sh `echo ${1%.yaml} | sed 's#^config/##'`
 
-You may need to do this to run package.sh:
+You may need to do this to run ./package.sh:
 sudo chown -R "$USER" crawls
 EOF
 exit 0
