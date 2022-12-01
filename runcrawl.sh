@@ -24,7 +24,7 @@ log="${dir}/${config}.log"
 err="${dir}/${config}.err"
 mkdir -p "$dir"
 cat > "$log" <<EOF
-Command: $@"
+Command: $0 $@
 Git remote:
 `git remote -v`
 
