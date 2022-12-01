@@ -19,7 +19,7 @@ to view the result.
 
 EOF
 config="`basename $1 .yaml`"
-dir="crawls/collections/$config"
+dir="logs/$config"
 log="${dir}/${config}.log"
 err="${dir}/${config}.err"
 mkdir -p "$dir"
