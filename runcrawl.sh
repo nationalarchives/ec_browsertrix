@@ -5,6 +5,10 @@ Usage: $0 config_file [workers]
 For example: $0 configs/scarlets_and_blues.yaml 8
 Tweak [workers] for your system or leave unset.
 
+This script assumes that configs are screencasting
+to port 9000. You may be able to monitor the crawl
+at http://localhoast:9000.
+
 Can e.g. use https://replayweb.page/ to view
 resulting crawls/collections/*/*.wacz files.
 At time of writing, this page works locally i.e.
