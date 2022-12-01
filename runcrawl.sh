@@ -5,9 +5,6 @@ Usage: $0 config_file [workers]
 For example: $0 configs/scarlets_and_blues.yaml 8
 Tweak [workers] for your system or leave unset.
 
-You may need to do this first:
-sudo chown -R "$USER" crawls
-
 Can e.g. use https://replayweb.page/ to view
 resulting crawls/collections/*/*.wacz files.
 At time of writing, this page works locally i.e.
@@ -16,6 +13,9 @@ your files do not get uploaded anywhere.
 Alternatively, you could follow the steps at
 https://github.com/webrecorder/browsertrix-crawler#viewing-crawled-data-with-pywb
 to view the result.
+
+You may need to do this at the end:
+sudo chown -R "$USER" crawls
 
 EOF
 config="`basename $1 .yaml`"
