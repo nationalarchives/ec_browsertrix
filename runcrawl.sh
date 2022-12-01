@@ -9,18 +9,6 @@ This script assumes that configs are screencasting
 to port 9000. You may be able to monitor the crawl
 at http://localhoast:9000.
 
-Can e.g. use https://replayweb.page/ to view
-resulting crawls/collections/*/*.wacz files.
-At time of writing, this page works locally i.e.
-your files do not get uploaded anywhere.
-
-Alternatively, you could follow the steps at
-https://github.com/webrecorder/browsertrix-crawler#viewing-crawled-data-with-pywb
-to view the result.
-
-You may need to do this at the end:
-sudo chown -R "$USER" crawls
-
 EOF
 config="`basename $1 .yaml`"
 dir="logs/$config"
@@ -44,4 +32,19 @@ Image:
 `docker image inspect webrecorder/browsertrix-crawler:latest`
 EOF
 cat "$1" | docker run -e CHROME_FLAGS='--incognito' -p 9000:9000 -i -v $PWD/crawls:/crawls/ webrecorder/browsertrix-crawler:latest crawl --config stdin ${2:+--workers $2} 2>"$err"
+
+
+cat <<EOF
+Can e.g. use https://replayweb.page/ to view
+resulting crawls/collections/*/*.wacz files.
+At time of writing, this page works locally i.e.
+your files do not get uploaded anywhere.
+
+Alternatively, you could follow the steps at
+https://github.com/webrecorder/browsertrix-crawler#viewing-crawled-data-with-pywb
+to view the result.
+
+You may need to do this to run package.sh:
+sudo chown -R "$USER" crawls
+EOF
 exit 0
