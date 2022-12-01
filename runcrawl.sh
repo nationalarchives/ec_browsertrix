@@ -45,6 +45,9 @@ Alternatively, you could follow the steps at
 https://github.com/webrecorder/browsertrix-crawler#viewing-crawled-data-with-pywb
 to view the result.
 
+To package up logs and archive:
+./package.sh `echo ${1%.yaml} | sed 's#^config/##'`
+
 You may need to do this to run package.sh:
 sudo chown -R "$USER" crawls
 EOF
