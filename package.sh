@@ -23,6 +23,7 @@ exit 1
 
 cp -vl crawls/collections/"$1"/"${1}".wacz crawls/collections/"$1"/pages/pages.jsonl "$targdir" &&
 cp -vlr logs/"$1" "$targdir"/logs &&
+echo "Writing configs/$1.yaml to ${targdir}/logs/${1}.yaml" &&
 cat configs/"$1".yaml > "${targdir}/logs/${1}.yaml" &&
 echo "Writing $packagelog" &&
 {
