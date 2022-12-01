@@ -36,5 +36,5 @@ Docker: `docker --version`
 LSB:
 `cat /etc/lsb-release`
 EOF
-cat "$1" | docker run -e CHROME_FLAGS='--incognito' -p 9000:9000 -i -v $PWD/crawls:/crawls/ webrecorder/browsertrix-crawler:0.5.1 crawl --config stdin ${2:+--workers $2} 2>"$err"
+cat "$1" | docker run -e CHROME_FLAGS='--incognito' -p 9000:9000 -i -v $PWD/crawls:/crawls/ webrecorder/browsertrix-crawler:latest crawl --config stdin ${2:+--workers $2} 2>"$err"
 exit 0
