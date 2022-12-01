@@ -13,6 +13,7 @@ EOF
 config="`basename $1 .yaml`"
 dir="logs/$config"
 log="${dir}/${config}.log"
+out="${dir}/${config}.out"
 err="${dir}/${config}.err"
 mkdir -p "$dir"
 cat > "$log" <<EOF
@@ -31,7 +32,7 @@ LSB:
 Image:
 `docker image inspect webrecorder/browsertrix-crawler:latest`
 EOF
-cat "$1" | docker run -e CHROME_FLAGS='--incognito' -p 9000:9000 -i -v $PWD/crawls:/crawls/ webrecorder/browsertrix-crawler:latest crawl --config stdin ${2:+--workers $2} 2>"$err"
+cat "$1" | docker run -e CHROME_FLAGS='--incognito' -p 9000:9000 -i -v $PWD/crawls:/crawls/ webrecorder/browsertrix-crawler:latest crawl --config stdin ${2:+--workers $2} 2>"$err" | tee "$out"
 
 
 cat <<EOF
